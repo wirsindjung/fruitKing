@@ -14,6 +14,7 @@ public class JDBCExam2 {
 		int insertCount = dao.addRole(role);
 		//æ»≥Á
 		//§æ§æ
+		//øÎ¡ÿ¿Ã √ﬂ∞°ø∞
 		System.out.println(insertCount);
 	}
 }
