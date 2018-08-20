@@ -11,9 +11,9 @@ import java.util.List;
 import kr.or.connect.jdbcexam.dto.Role;
 
 public class RoleDao {
-	private static String dburl = "jdbc:mysql://localhost:3306/connectdb?autoReconnect=true&useSSL=false";
-	private static String dbUser = "connectuser";
-	private static String dbpasswd = "connect123!@#";
+	private static String dburl = "jdbc:mysql://fruitking.czxyyplvdfua.us-east-2.rds.amazonaws.com/connectdb?autoReconnect=true&useSSL=false";
+	private static String dbUser = "master";
+	private static String dbpasswd = "password";
 	
 	public Role getRole(Integer roleId) {
 		Role role = null;
