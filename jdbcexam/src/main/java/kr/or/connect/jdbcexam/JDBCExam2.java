@@ -12,7 +12,7 @@ public class JDBCExam2 {
 		
 		RoleDao dao = new RoleDao();
 		int insertCount = dao.addRole(role);
-
+		//¾È³ç
 		System.out.println(insertCount);
 	}
 }
