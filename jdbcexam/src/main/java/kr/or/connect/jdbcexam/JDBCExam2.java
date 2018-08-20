@@ -14,7 +14,7 @@ public class JDBCExam2 {
 		int insertCount = dao.addRole(role);
 		//안녕
 		//ㅎㅎ
-		//용준이 추가염
+		//용준이 추가염..
 		System.out.println(insertCount);
 	}
 }
