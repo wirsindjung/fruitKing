@@ -14,7 +14,7 @@ public class RoleDao {
 	private static String dburl = "jdbc:mysql://fruitking.czxyyplvdfua.us-east-2.rds.amazonaws.com/connectdb?autoReconnect=true&useSSL=false";
 	private static String dbUser = "master";
 	private static String dbpasswd = "password";
-	
+	//형욱
 	public Role getRole(Integer roleId) {
 		Role role = null;
 		Connection conn = null;
@@ -107,7 +107,7 @@ public class RoleDao {
 					String description = rs.getString(1);
 					int id = rs.getInt("role_id");
 					Role role = new Role(id, description);
-					list.add(role); // list에 반복할때마다 Role인스턴스를 생성하여 list에 추가한다.
+					list.add(role); // list�뿉 諛섎났�븷�븣留덈떎 Role�씤�뒪�꽩�뒪瑜� �깮�꽦�븯�뿬 list�뿉 異붽��븳�떎.
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
