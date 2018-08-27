@@ -1,0 +1,42 @@
+[
+    {
+        "name" : "사이트 소개",
+        "html" : "info"
+    },
+    {
+        "name" : "과일 거래량",
+        "html" : "volume"
+    },
+    {
+        "name" : "날씨",
+        "html" : "weather"
+    },
+    {
+        "name" : "조세",
+        "html" : "tax"
+    },
+    {
+        "name" : "물류",
+        "html" : "logistics"
+    },
+    {
+        "name" : "경매가",
+        "html" : "auction"
+    },
+    {
+        "name" : "판매가",
+        "html" : "price"
+    },
+    {
+        "name" : "관련뉴스",
+        "html" : "news"
+    },
+    {
+        "name" : "공지사항",
+        "html" : "notify"
+    },
+    {
+        "name" : "문의하기",
+        "html" : "qna"
+    }
+]

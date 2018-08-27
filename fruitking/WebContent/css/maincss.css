@@ -1,0 +1,34 @@
+h2 {text-align: center}
+h2,h4 {
+	margin: 0px;
+}
+.container {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+.tab {
+	width: 1000px;
+}
+.tabmenu {
+	background-color: bisque;
+	margin: 0px;
+}
+.tabmenu > div {
+	font-size: 15px;
+	display: inline-block;
+	width: 10%;
+	text-align: center;
+	height: 50px;
+	line-height: 50px;
+	cursor: pointer;
+	margin-right: -8px;
+}
+.content {
+	padding: 3%;
+	background-color: rgb(253,255,244);
+}
+.tabcontent {
+	border: none;
+}
