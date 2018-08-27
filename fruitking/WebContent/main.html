@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>쫌 됐으면 좋겠다ㅡㅡ</title>
+<link rel="stylesheet" href="./css/maincss.css">
+</head>
+<body>
+	<h2>TAB UI TEST</h2>
+
+	<div class="tab container">
+		<div class="tabmenu">
+			<div>사이트 소개</div>
+			<div>과일 거래량</div>
+			<div>날씨</div>
+			<div>조세</div>
+			<div>물류</div>
+			<div>경매가</div>
+			<div>판매가</div>
+			<div>관련뉴스</div>
+			<div>공지사항</div>
+			<div>문의하기</div>
+		</div>
+		<section class="content">
+		</section>
+	</div>
+		
+	<script>
+		function makeTemplate(data, clickedName) {
+			var resultHTML = "";
+			var html = document.getElementById("tabcontent").innerHTML;
+			
+			for (var i = 0, len = data.length; i < len; i++) {
+				if (data[i].name === clickedName) {
+					resultHTML = html.replace("{html}", data[i].html)
+					break;
+				}
+			}
+				document.querySelector(".content").innerHTML = resultHTML;
+			}
+		
+		function sendAjax(url, clickedName) {
+			var oReq = new XMLHttpRequest();
+				oReq.addEventListener("load", function() {
+				var data = JSON.parse(oReq.responseText);
+				makeTemplate(data, clickedName);
+			});
+			oReq.open("GET", url);
+			oReq.send();
+		}
+	
+		var tabmenu = document.querySelector(".tabmenu");
+			tabmenu.addEventListener("click", function(evt){
+			sendAjax("./url.txt", evt.target.innerHTML);
+		})
+	</script>
+	
+	<script id="tabcontent" type="my-template">
+		<iframe src="./tab/{html}.jsp" width="100%" height="550px"style="border: solid transparent;">
+	</script>
+</body>
+</html>
