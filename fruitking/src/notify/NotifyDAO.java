@@ -104,6 +104,10 @@ public class NotifyDAO {
 		return "";
 	}
 	
+	public NotifyDTO Next(int id) {
+		
+	}
+	
 	public NotifyDTO getNotifyDTO(int id) {
 		String SQL = "select * from notify where id = ?";
 		try {

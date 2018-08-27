@@ -9,7 +9,7 @@ h2,h4 {
   margin-left: auto;
 }
 .tab {
-	width: 1200px;
+	width: 1000px;
 }
 .tabmenu {
 	background-color: bisque;
@@ -27,7 +27,7 @@ h2,h4 {
 }
 .content {
 	padding: 3%;
-	background-color: antiquewhite;
+	background-color: rgb(253,255,244);
 }
 .tabcontent {
 	border: none;
