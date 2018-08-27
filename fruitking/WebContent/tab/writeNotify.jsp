@@ -13,8 +13,8 @@
 <link rel="stylesheet" href="../css/bootstrap.css">
 </head>
 <body>
-	<div class="container">
-		<div class="row">
+	<div>
+		<div style="background-color: rgb(253,255,244);">
 			<form metho="post" action="writeAction.jsp">
 				<table class="table table-striped" style="text-align: center;	border: 1px solid #dddddd;">
 					<thead>

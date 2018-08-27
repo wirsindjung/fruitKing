@@ -32,8 +32,8 @@
 		}
 		NotifyDTO notify = new NotifyDAO().getNotifyDTO(id);
 	%>
-	<div class="container">
-		<div class="row">
+	<div>
+		<div style="background-color: rgb(253,255,244);">
 			<table class="table table-striped" style="text-align: center;	border: 1px solid #dddddd;">
 				<thead>
 					<tr>
@@ -55,17 +55,11 @@
 					</tr>
 					<tr>
 						<td>윗 글</td>
-						<td colspan="2""><a href="view.jsp?id=<%=id + 1 %>">
-						<% NotifyDTO notifyNext = new NotifyDAO().getNotifyDTO(id + 1); %>
-						<%= notifyNext.getTitle() %>
-						</a></td>
+						<td colspan="2""><a href="view.jsp?id=<%=id+1 %>"><%= notify.getTitle() %></a></td>
 					</tr>
 					<tr>
 						<td>아랫 글</td>
-						<td colspan="2""><a href="view.jsp?id=<%=id - 1 %>">
-						<% NotifyDTO notifyPrior = new NotifyDAO().getNotifyDTO(id - 1); %>
-						<%= notifyPrior.getTitle() %>
-						</a></td>
+						<td colspan="2""><a href="view.jsp?id=<%=id-1%>"><%= notify.getTitle() %></a></td>
 					</tr>
 				</tbody>
 			</table>
