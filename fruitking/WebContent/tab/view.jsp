@@ -10,12 +10,6 @@
 <meta charset="UTF-8">
 <title>notify</title>
 <link rel="stylesheet" href="../css/bootstrap.css">
-<style type="text/css">
-	#content {
-		min-height: 300px;
-		text-align: left;
-	}
-</style>
 </head>
 <body>
 	<%
@@ -31,6 +25,8 @@
 			script.println("</script>");
 		}
 		NotifyDTO notify = new NotifyDAO().getNotifyDTO(id);
+		NotifyDTO priorNotify = new NotifyDAO().getPriorNotify(id);
+		NotifyDTO nextNotify = new NotifyDAO().getNextNotify(id);
 	%>
 	<div>
 		<div style="background-color: rgb(253,255,244);">
@@ -51,21 +47,43 @@
 					</tr>
 					<tr>
 						<td>내용</td>
-						<td id="content" colspan="2" style="min-height: 300px; text-align: left;"><%= notify.getContent() %></td>
+						<td colspan="2"><div style="min-height: 200px; text-align: left;"><%= notify.getContent() %></div></td>
 					</tr>
-					<tr>
-						<td>윗 글</td>
-						<td colspan="2""><a href="view.jsp?id=<%=id+1 %>"><%= notify.getTitle() %></a></td>
-					</tr>
-					<tr>
-						<td>아랫 글</td>
-						<td colspan="2""><a href="view.jsp?id=<%=id-1%>"><%= notify.getTitle() %></a></td>
-					</tr>
+					<%
+						if(priorNotify != null){
+					%>
+						<tr>
+							<td>윗 글</td>
+							<td colspan="2"><a href="view.jsp?id=<%=nextNotify.getId() %>"><%= nextNotify.getTitle() %></a></td>
+						</tr>
+					<%
+						} else {
+					%>
+						<tr>
+							<td>윗 글</td>
+							<td colspan="2">윗 글이 없습니다.</td>
+						</tr>
+					<%
+						}
+						if(nextNotify != null){
+					%>
+						<tr>
+							<td>아랫 글</td>
+							<td colspan="2"><a href="view.jsp?id=<%=priorNotify.getId()%>"><%= priorNotify.getTitle() %></a></td>
+						</tr>
+					<%
+						} else {
+					%>
+						<tr>
+							<td>아랫 글</td>
+							<td colspan="2">아랫 글이 없습니다.</td>
+						</tr>
+					<%
+						}
+					%>
 				</tbody>
 			</table>
 			<a href="notify.jsp" class="btn btn-primary">목록</a>
-			<a href="update.jsp?id=<%=id %>" class="btn btn-primary">수정</a>
-			<a href="deleteAction.jsp?id=<%=id %>" class="btn btn-primary">삭제</a>
 		</div>
 	</div>
 

@@ -125,7 +125,7 @@ public class NotifyDAO {
 	}
 	
 	public NotifyDTO getPriorNotify(int id) {
-		String SQL = "select * from notify where id = ?";
+		String SQL = "select * from notify where id < ? order by id desc limit 1";
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(SQL);
 			pstmt.setInt(1,  id);
