@@ -52,23 +52,13 @@
 				</tbody>
 			</table>
 			<%
-				if(pageNumber >= 6) {
-			%>
-				<a href="notify.jsp?pageNumber=<%=pageNumber - (pageNumber % 5) %>"><<</a>
-			<% 
-				}
 				if(pageNumber != 1) {
-					for(int i = 0; i < 5; i++){
-						%>
-						
-							<a href="notify.jsp?pageNumber=<%=i%>" ><%=i %></a>
-						<%
-						if(!notifyDAO.nextPage(pageNumber + 1)) break;
-					}
-				}
-				if(notifyDAO.nextPage(pageNumber + 1)) {
 			%>
-				<a href="notify.jsp?pageNumber=<%=pageNumber + 1 %>">>></a>
+				<a href="notify.jsp?pageNumber=<%=pageNumber - 1 %>" class="btn btn-success btn-arrow-left">이전</a>
+			<% 
+				} if(notifyDAO.nextPage(pageNumber + 1)) {
+			%>
+				<a href="notify.jsp?pageNumber=<%=pageNumber + 1 %>" class="btn btn-success btn-arrow-right">다음</a>
 			<%
 				}
 			%>
