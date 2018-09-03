@@ -54,11 +54,11 @@
 			<%
 				if(pageNumber != 1) {
 			%>
-				<a href="notify.jsp?pageNumber=<%=pageNumber - 1 %>" class="btn btn-success btn-arrow-left">이전</a>
+				<a href="notify.jsp?pageNumber=<%=pageNumber - 1 %>" class="btn btn-success btn-arrow-left"><<</a>
 			<% 
 				} if(notifyDAO.nextPage(pageNumber + 1)) {
 			%>
-				<a href="notify.jsp?pageNumber=<%=pageNumber + 1 %>" class="btn btn-success btn-arrow-right">다음</a>
+				<a href="notify.jsp?pageNumber=<%=pageNumber + 1 %>" class="btn btn-success btn-arrow-right">>></a>
 			<%
 				}
 			%>
