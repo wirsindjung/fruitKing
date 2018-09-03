@@ -19,7 +19,7 @@
     	</div>
 
 		<div>
-        	<label for="msg">Message:</label>
+        	<label for="message">Message:</label>
         	<textarea name="message"></textarea>
     	</div>
     		
