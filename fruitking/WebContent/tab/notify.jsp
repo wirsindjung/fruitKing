@@ -25,8 +25,8 @@
 			pageNumber = Integer.parseInt(request.getParameter("pageNumber"));
 		}
 	%>
-	<div class="container">
-		<div class="row">
+	<div>
+		<div style="background-color: rgb(253,255,244);">
 			<table class="table table-striped" style="text-align: center;	border: 1px solid #dddddd;">
 				<thead>
 					<tr>
@@ -43,7 +43,7 @@
 					%>
 					<tr>
 						<td><%= notify.get(i).getId() %></td>
-						<td><a href="view.jsp?id=<%= notify.get(i).getId() %>"><%= notify.get(i).getTitle() %></td>
+						<td><a href="view.jsp?id=<%= notify.get(i).getId() %>"><%= notify.get(i).getTitle() %></a></td>
 						<td><%= notify.get(i).getDate() %></td>
 					</tr>
 					<%

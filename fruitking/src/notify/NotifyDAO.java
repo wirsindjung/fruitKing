@@ -25,11 +25,11 @@ public class NotifyDAO {
 	}
 	
 	public ArrayList<NotifyDTO> getNotify(int pageNumber) {
-		String SQL = "select * from notify where id < ? order by id desc limit 10";
+		String SQL = "select * from notify order by id desc limit ?,10";
 		ArrayList<NotifyDTO> notify = new ArrayList<NotifyDTO>();
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(SQL);
-			pstmt.setInt(1,  getNext() - (pageNumber - 1) * 10);
+			pstmt.setInt(1, (pageNumber - 1) * 10);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
 				NotifyDTO NotifyDTO = new NotifyDTO();
@@ -49,7 +49,7 @@ public class NotifyDAO {
 		String SQL = "select * from notify where id < ?";
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(SQL);
-			pstmt.setInt(1,  getNext() - (pageNumber - 1) * 10);
+			pstmt.setInt(1,  getCount() - (pageNumber - 1) * 10);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
 				return true;
@@ -75,8 +75,23 @@ public class NotifyDAO {
 		return -1;
 	}
 	
-	private int getNext() {
+	public int getNext() {
 		String SQL = "select id from notify order by id desc";
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(SQL);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				return rs.getInt(1) + 1;
+			}
+			return -1;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return -1;
+	}	
+	
+	public int getCount() {
+		String SQL = "select count(*) from notify";
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(SQL);
 			rs = pstmt.executeQuery();
@@ -90,7 +105,7 @@ public class NotifyDAO {
 		return -1;
 	}
 
-	private String getDate() {
+	public String getDate() {
 		String SQL = "select now()";
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(SQL);
@@ -104,8 +119,46 @@ public class NotifyDAO {
 		return "";
 	}
 	
-	public NotifyDTO Next(int id) {
-		
+	public NotifyDTO getNextNotify(int id) {
+		String SQL = "select * from (select * from notify where id >= ? order by id asc limit 2)a order by id desc";
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(SQL);
+			pstmt.setInt(1,  id);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				NotifyDTO NotifyDTO = new NotifyDTO();
+				NotifyDTO.setId(rs.getInt(1));
+				NotifyDTO.setTitle(rs.getString(2));
+				NotifyDTO.setContent(rs.getString(3));
+				NotifyDTO.setDate(rs.getString(4));
+				return NotifyDTO;
+			} else {
+				return null;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public NotifyDTO getPriorNotify(int id) {
+		String SQL = "select * from (select * from notify where id <= ? order by id desc limit 2)a order by id asc";
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(SQL);
+			pstmt.setInt(1,  id);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				NotifyDTO NotifyDTO = new NotifyDTO();
+				NotifyDTO.setId(rs.getInt(1));
+				NotifyDTO.setTitle(rs.getString(2));
+				NotifyDTO.setContent(rs.getString(3));
+				NotifyDTO.setDate(rs.getString(4));
+				return NotifyDTO;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 	
 	public NotifyDTO getNotifyDTO(int id) {
@@ -126,5 +179,31 @@ public class NotifyDAO {
 			e.printStackTrace();
 		}
 		return null;
+	}
+	
+	public int update(int id, String title, String content) {
+		String SQL = "update notify set title = ?, content = ? where id = ?";
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1, title);
+			pstmt.setString(2, content);
+			pstmt.setInt(3, id);
+			return pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return -1;
+	}
+	
+	public int delete(int id) {
+		String SQL = "delete from notify where id = ?";
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(SQL);
+			pstmt.setInt(1, id);
+			return pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return -1;
 	}
 }
