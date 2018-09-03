@@ -25,8 +25,8 @@
 			script.println("</script>");
 		}
 		NotifyDTO notify = new NotifyDAO().getNotifyDTO(id);
-		NotifyDTO priorNotify = new NotifyDAO().getPriorNotify(id);
 		NotifyDTO nextNotify = new NotifyDAO().getNextNotify(id);
+		NotifyDTO priorNotify = new NotifyDAO().getPriorNotify(id);
 	%>
 	<div>
 		<div style="background-color: rgb(253,255,244);">
@@ -50,33 +50,33 @@
 						<td colspan="2"><div style="min-height: 200px; text-align: left;"><%= notify.getContent() %></div></td>
 					</tr>
 					<%
-						if(priorNotify != null){
+						if(nextNotify.getId() == notify.getId()){
 					%>
 						<tr>
-							<td>윗 글</td>
+							<td>윗글</td>
+							<td colspan="2">윗글이 없습니다.</td>
+						</tr>
+					<%
+						} else {
+					%>
+						<tr>
+							<td>윗글</td>
 							<td colspan="2"><a href="view.jsp?id=<%=nextNotify.getId() %>"><%= nextNotify.getTitle() %></a></td>
 						</tr>
 					<%
-						} else {
-					%>
-						<tr>
-							<td>윗 글</td>
-							<td colspan="2">윗 글이 없습니다.</td>
-						</tr>
-					<%
 						}
-						if(nextNotify != null){
+						if(priorNotify.getId() == notify.getId()){
 					%>
 						<tr>
-							<td>아랫 글</td>
-							<td colspan="2"><a href="view.jsp?id=<%=priorNotify.getId()%>"><%= priorNotify.getTitle() %></a></td>
+							<td>아랫글</td>
+							<td colspan="2">아랫글이 없습니다.</td>
 						</tr>
 					<%
 						} else {
 					%>
 						<tr>
-							<td>아랫 글</td>
-							<td colspan="2">아랫 글이 없습니다.</td>
+							<td>아랫글</td>
+							<td colspan="2"><a href="view.jsp?id=<%=priorNotify.getId()%>"><%= priorNotify.getTitle() %></a></td>
 						</tr>
 					<%
 						}
@@ -84,6 +84,8 @@
 				</tbody>
 			</table>
 			<a href="notify.jsp" class="btn btn-primary">목록</a>
+			<a href="updateNotify.jsp?id=<%=id %>" class="btn btn-primary">수정</a>
+			<a onclick="return confirm('정말로 삭제하시겠습니까?')" href="deleteAction.jsp?id=<%=id %>" class="btn btn-primary pull-right">삭제</a>
 		</div>
 	</div>
 

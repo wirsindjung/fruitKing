@@ -43,7 +43,7 @@
 					%>
 					<tr>
 						<td><%= notify.get(i).getId() %></td>
-						<td><a href="view.jsp?id=<%= notify.get(i).getId() %>"><%= notify.get(i).getTitle() %></td>
+						<td><a href="view.jsp?id=<%= notify.get(i).getId() %>"><%= notify.get(i).getTitle() %></a></td>
 						<td><%= notify.get(i).getDate() %></td>
 					</tr>
 					<%

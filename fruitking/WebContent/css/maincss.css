@@ -1,3 +1,7 @@
+/* div:focus {
+  background-color: #ffff00;
+}
+ */
 h2 {text-align: center}
 h2,h4 {
 	margin: 0px;
@@ -10,7 +14,14 @@ h2,h4 {
 }
 .tab {
 	width: 1000px;
+	margin-right: auto;
+	margin-left: auto;
 }
+
+.tablinks.active {
+    background-color: rgb(61, 116, 199);
+  }
+  
 .tabmenu {
 	background-color: bisque;
 	margin: 0px;
