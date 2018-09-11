@@ -1,5 +1,6 @@
 <?php
-        $token = "AAAAN51t0m0r5TF/GJ8jmFV5YZUxCA9T6cZtrt+MvIk7MrnKSRwkwZNRwNx6KnHxMSf06RYvL01OFG5m7+0XabwlRyg=";        //이곳에 엑세스 토큰을 넣어야 함
+        //$token = "AAAAN/5EC3lPi8AXQW/rvNXLz5uuoKWYMIV7ePFTCP0RIoOldXQ00Jw36AsdJsy/BMXV+clQP2UVG+rlcWidMJG3IAU=";
+	$token = $_REQUEST["accessToken"];        //이곳에 엑세스 토큰을 넣어야 함
         $header = "Bearer ".$token; // Bearer 다음에 공백 추가
         $url = "https://openapi.naver.com/v1/nid/me";
         $is_post = false;
@@ -12,7 +13,11 @@
         curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
         $response = curl_exec ($ch);
         $status_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        echo "status_code:".$status_code."<br>";
+        
+	//$res =$_REQUEST["testtext"];
+	//echo $res1."<br>";
+
+	echo "status_code:".$status_code."<br>";
         curl_close ($ch);
         $result_value;
         if($status_code == 200) {
@@ -28,3 +33,4 @@
                 echo "Error 내용:".$response;
         }
 ?>
+
