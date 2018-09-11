@@ -1,4 +1,4 @@
 # fruitKing
 
 
-http://fruitking.tk/
+http://fruitking.cf/
