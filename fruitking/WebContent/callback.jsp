@@ -52,21 +52,18 @@
         }
         br.close();
         if(responseCode==200) {
-          out.println(res.toString());
-          JSONParser parser = new JSONParser();
-          Object obj = parser.parse( res.toString() );
-          JSONObject jsonObj2 = (JSONObject) obj;
+          //out.println(res.toString());	// res에 들어있는 문자열 출력	
+          JSONParser parser = new JSONParser();	
+          Object obj = parser.parse(res.toString());	// res에 저장된 json형식의 String을 파싱하여 object로
+          JSONObject jsonObj2 = (JSONObject) obj;	// obj를 json 전용 object으로 변환하여 저장
 
+          String access_token2 = "";			// 엑세스 토큰을 저장하기 위한 String 변수
+          String refresh_token2 = "";			// 리프레시 토큰을 저자하기 위한 String 변수
 
-          String access_token2 = "";
-          String refresh_token2 = "";
+          access_token2 = (String)jsonObj2.get("access_token");	// 엑세스 토큰을 변수에 저장함
+          out.println("<br><br>access_token : "+access_token2);	
 
-
-
-          access_token2 = (String)jsonObj2.get("access_token");
-          out.println("<br><br>access_token : "+access_token2);
-
-          refresh_token2 = (String)jsonObj2.get("refresh_token");
+          refresh_token2 = (String)jsonObj2.get("refresh_token");	// 리프레시 토큰을 저장함
           out.println("<br>refresh_token : "+refresh_token2);
 
           Cookie access_token_cookie = new Cookie("access_token", access_token2);    // 쿠키를 생성한다. 이름: accesstoken, 값 : String 변수 access_token2에 저장된 문자열
@@ -81,7 +78,7 @@
           response.addCookie(access_token_cookie);        // 클라이언트 응답에 쿠키를 추가한다.
           response.addCookie(refresh_token_cookie);
 	
-	out.println(cookieMap.get("access_token").getvalue());
+	//out.println(cookieMap.get("access_token").getvalue());
         }
       } catch (Exception e) {
         System.out.println(e);
