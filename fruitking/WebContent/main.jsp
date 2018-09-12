@@ -12,7 +12,7 @@
         </script>
 </head>
 <body>
-        <h2>Fruit King</h2><br><a href="./naverlogin.jsp">네이버로그인</a>
+	<h2>Fruit King</h2><br><a href="./naverlogin.jsp">네이버로그인</a>
 
 	<div class="tab">
 		<div class="tabmenu">
@@ -27,6 +27,7 @@
 			<div class="tablinks" onclick="openTab(event)">공지사항</div>
 			<div class="tablinks" onclick="openTab(event)">문의하기</div>
 		</div>
+		
 		<section class="content">
 		</section>
 	</div>

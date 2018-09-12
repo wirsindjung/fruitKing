@@ -68,7 +68,7 @@
 	}
 	out.println(rawAccessToken);
 	String accessToken = URLEncoder.encode(rawAccessToken, "UTF-8");
-        out.println("<br>");
+    out.println("<br>");
 	out.println(accessToken);
 	//String testtext = URLEncoder.encode("test text!", "UTF-8");
 	response.sendRedirect("/test.php?accessToken=" + accessToken);

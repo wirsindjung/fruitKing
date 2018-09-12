@@ -43,7 +43,7 @@
 					%>
 					<tr>
 						<td><%= notify.get(i).getId() %></td>
-						<td><a href="view.jsp?id=<%= notify.get(i).getId() %>"><%= notify.get(i).getTitle() %></a></td>
+						<td><a href="notify/view.jsp?id=<%= notify.get(i).getId() %>"><%= notify.get(i).getTitle() %></a></td>
 						<td><%= notify.get(i).getDate() %></td>
 					</tr>
 					<%
@@ -52,17 +52,33 @@
 				</tbody>
 			</table>
 			<%
-				if(pageNumber != 1) {
+				if(pageNumber >= 6) {
 			%>
-				<a href="notify.jsp?pageNumber=<%=pageNumber - 1 %>" class="btn btn-success btn-arrow-left"><<</a>
+					<a href="notify.jsp?pageNumber=<%=pageNumber - (pageNumber % 5) %>"><<</a>
 			<% 
-				} if(notifyDAO.nextPage(pageNumber + 1)) {
+				}
+				int start = (pageNumber / 5) * 5 + 1;
+				if(pageNumber % 5 == 0) start -= 5;
+				for(int i = start; i < start + 5; i++){
+					if(i == pageNumber){
 			%>
-				<a href="notify.jsp?pageNumber=<%=pageNumber + 1 %>" class="btn btn-success btn-arrow-right">>></a>
+						<%=i %>
+			<%
+						continue;
+					}
+					if(!notifyDAO.nextPage(i)) break;
+			%>
+						<a href="notify.jsp?pageNumber=<%=i%>" ><%=i %></a>
+			<%
+				}
+				
+				if(notifyDAO.nextPage(start + 5)) {
+			%>
+				<a href="notify.jsp?pageNumber=<%=start + 5%>">>></a>
 			<%
 				}
 			%>
-			<a href="writeNotify.jsp" class="btn btn-primary pull-right">글쓰기</a>
+			<a href="notify/writeNotify.jsp" class="btn btn-primary pull-right">글쓰기</a>
 		</div>
 	</div>
 

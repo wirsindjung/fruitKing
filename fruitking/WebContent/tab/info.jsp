@@ -7,5 +7,6 @@
 </head>
 <body>
 	<div>소개 화면 입니다.</div>
+	<?php phpinfo(); ?>
 </body>
 </html>
