@@ -13,8 +13,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<% JSONObject obj = new JSONObject();
+	<%
+		JSONObject obj = new JSONObject();
 
- %>
+	%>
 </body>
 </html>

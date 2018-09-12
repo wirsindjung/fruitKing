@@ -85,6 +85,44 @@
       } catch (Exception e) {
         System.out.println(e);
       }
+<<<<<<< HEAD
+=======
+      String inputLine;
+      StringBuffer res = new StringBuffer();
+      while ((inputLine = br.readLine()) != null) {
+        res.append(inputLine);
+      }
+      br.close();
+      String str;//=" Hello world! my name is minju."; 
+      StringTokenizer st;// = new StringTokenizer(str); 
+      //System.out.println(st.countTokens()); 
+      //while(st.hasMoreTokens()) { 
+	//out.println(st.nextToken());
+      	//out.println("<br>"); 
+      //}	
+      int i = 0;
+      String rawAccessToken = "";
+      if(responseCode==200) {
+        out.println(res.toString());
+	str = res.toString();
+	st = new StringTokenizer(str,"\"");
+	while(i < 4) {
+		if ( i <= 3) {
+			rawAccessToken = st.nextToken();
+		}
+		i = i+1;
+	}
+	out.println(rawAccessToken);
+	String accessToken = URLEncoder.encode(rawAccessToken, "UTF-8");
+    out.println("<br>");
+	out.println(accessToken);
+	//String testtext = URLEncoder.encode("test text!", "UTF-8");
+	response.sendRedirect("/test.php?accessToken=" + accessToken);
+      }
+    } catch (Exception e) {
+      System.out.println(e);
+    }
+>>>>>>> branch 'master' of https://github.com/wirsindjung/fruitKing.git
   %>
   </body>
 </html>

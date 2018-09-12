@@ -8,7 +8,7 @@
     <title>네이버로그인</title>
   </head>
   <body>
-  <a href ="./main.html">메인으로 이동 </a>
+  <a href ="./main.jsp">메인으로 이동 </a><br>
   <%
     String clientId = "ravoW4uifW7U6hs5l8QL";//애플리케이션 클라이언트 아이디값";
     String redirectURI = URLEncoder.encode("http://fruitking.cf/callback.jsp", "UTF-8");

@@ -46,12 +46,12 @@ public class NotifyDAO {
 	}
 	
 	public boolean nextPage(int pageNumber) {
-		String SQL = "select * from notify where id < ?";
+		String SQL = "select count(*) from notify";
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(SQL);
-			pstmt.setInt(1,  getCount() - (pageNumber - 1) * 10);
 			rs = pstmt.executeQuery();
-			if (rs.next()) {
+			rs.next();
+			if (rs.getInt(1) - (pageNumber - 1)*10 > 0) {
 				return true;
 			}
 		} catch (Exception e) {
