@@ -2,61 +2,55 @@ package user;
 
 public class UserDTO {
 	
-	private String userID;
+	private int userID;
 	private String userEmail;
 	private String userName;
-	private String userAge;
+	private int userAge;
 	private String userBirth;
-	private String userGender;
-	private String userAccesstoken;
-	private String userRefreshtoken;
-	public String getUserID() {
+	private Boolean userGender;
+	private String userGrade;
+	
+	public int getUserID() {
 		return userID;
 	}
-	public void setUserID(String userID) {
-		userID = userID;
+	public void setUserID(int userID) {
+		this.userID = userID;
 	}
 	public String getUserEmail() {
 		return userEmail;
 	}
 	public void setUserEmail(String userEmail) {
-		userEmail = userEmail;
+		this.userEmail = userEmail;
 	}
 	public String getUserName() {
 		return userName;
 	}
 	public void setUserName(String userName) {
-		userName = userName;
+		this.userName = userName;
 	}
-	public String getUserAge() {
+	public int getUserAge() {
 		return userAge;
 	}
-	public void setUserAge(String userAge) {
-		userAge = userAge;
+	public void setUserAge(int userAge) {
+		this.userAge = userAge;
 	}
 	public String getUserBirth() {
 		return userBirth;
 	}
 	public void setUserBirth(String userBirth) {
-		userBirth = userBirth;
+		this.userBirth = userBirth;
 	}
-	public String getUserGender() {
+	public Boolean getUserGender() {
 		return userGender;
 	}
-	public void setUserGender(String userGender) {
-		userGender = userGender;
+	public void setUserGender(Boolean userGender) {
+		this.userGender = userGender;
 	}
-	public String getUserAccesstoken() {
-		return userAccesstoken;
+	public String getUserGrade() {
+		return userGrade;
 	}
-	public void setUserAccesstoken(String userAccesstoken) {
-		userAccesstoken = userAccesstoken;
-	}
-	public String getUserRefreshtoken() {
-		return userRefreshtoken;
-	}
-	public void setUserRefreshtoken(String userRefreshtoken) {
-		userRefreshtoken = userRefreshtoken;
+	public void setUserGrade(String userGrade) {
+		this.userGrade = userGrade;
 	}
 	
 }
