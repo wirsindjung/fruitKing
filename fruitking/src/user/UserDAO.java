@@ -31,10 +31,10 @@ public class UserDAO {
 			pstmt.setString(1, Email);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
-				if(rs.getString(1) != null) {
-					return 1;	//로그인 성공
-				} else {
-					return 0;	//id 없음
+				if(rs.getString(1) != null) {	//로그인 성공
+					return 1;
+				} else {	//id 없음
+					return 0;
 				}
 			} 
 		} catch(Exception e) {
