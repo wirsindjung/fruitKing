@@ -53,32 +53,32 @@
        
 		String nickname = "";
 		int age; 		// 20대면 2, 30대면 3
-		boolean gender = false;	// 0 이면 Female, 1이면 Male
-		String email = "";
-		String name = "";
-		String birthday = "";
-		
-		JSONParser parser = new JSONParser();
-                Object obj = parser.parse(response1.toString());
-                // response1에 저장된 json형식의 String을 파싱하여 object로
-                JSONObject jsonObj = (JSONObject) obj;	// jsonObj는 전체 json 오브젝트	
-		String response2 = jsonObj.get("response").toString();	
-		// 전체 json에서 response만 받아와서 String으로
-		
-		JSONParser parser2 = new JSONParser();
-		Object obj2 = parser2.parse(response2);		// obj는 response 오브젝트
-		JSONObject jsonObj2 = (JSONObject) obj2;	// 다시 그대로 반복하여 json 오브젝트로
+		boolean is_man = false; // false 이면 Female, true이면 Male
+        String email = "";
+        String name = "";
+        String birthday = "";
 
-		nickname = jsonObj2.get("nickname").toString();
-		email = jsonObj2.get("email").toString();
-		name = jsonObj2.get("name").toString();
-		birthday = jsonObj2.get("birthday").toString();
-		age =  Integer.parseInt(jsonObj2.get("age").toString().substring(0,1));
-		if(jsonObj2.get("gender").toString().equals("M")){
-			gender = true;
-		} else if(jsonObj2.get("gender").toString().equals("F")){
-			gender = false;
-		}
+        JSONParser parser = new JSONParser();
+        Object obj = parser.parse(response1.toString());
+        // response1에 저장된 json형식의 String을 파싱하여 object로
+        JSONObject jsonObj = (JSONObject) obj;  // jsonObj는 전체 json 오브젝트 
+        String response2 = jsonObj.get("response").toString();
+        // 전체 json에서 response만 받아와서 String으로
+
+        JSONParser parser2 = new JSONParser();
+        Object obj2 = parser2.parse(response2);         // obj는 response 오브젝트
+        JSONObject jsonObj2 = (JSONObject) obj2;        // 다시 그대로 반복하여 json 오브젝트로
+
+        nickname = jsonObj2.get("nickname").toString();
+        email = jsonObj2.get("email").toString();
+        name = jsonObj2.get("name").toString();
+        birthday = jsonObj2.get("birthday").toString();
+        age =  Integer.parseInt(jsonObj2.get("age").toString().substring(0,1));
+        if(jsonObj2.get("gender").toString().equals("M")){
+                is_man = true;
+        } else if(jsonObj2.get("gender").toString().equals("F")){
+                is_man = false;
+        }
 	} catch (Exception e) {
        	System.out.println(e);
       	}
