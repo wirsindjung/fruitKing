@@ -114,7 +114,7 @@
 			}
 		} else {	//db 오류
 			script.println("<script>");
-			script.println("alert('로그인 실패!')");
+			script.println("alert('로그인 실패!!!')");
 			script.println("history.back()");
 			script.println("</script>");
 		}
@@ -123,7 +123,6 @@
 	  	System.out.println(e);
 	}
 	
-
 %>
 </body>
 </html>

@@ -30,13 +30,11 @@ public class UserDAO {
 			pstmt = conn.prepareStatement(SQL);
 			pstmt.setString(1, Email);
 			rs = pstmt.executeQuery();
-			if(rs.next()) {
-				if(rs.getString(1) != null) {	//로그인 성공
-					return 1;
-				} else {	//id 없음
-					return 0;
-				}
-			} 
+			if(rs.next()) {	//로그인 성공
+				return 1;
+			} else {	//id 없음
+				return 0;
+			}
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
