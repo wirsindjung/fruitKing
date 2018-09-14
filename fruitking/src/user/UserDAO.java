@@ -32,9 +32,8 @@ public class UserDAO {
 			rs = pstmt.executeQuery();
 			if(rs.next()) {	//db에 아이디 존재
 				return 1;
-			} else {	//id 없음
-				return 0;
 			}
+			return 0;	//id 없음
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
