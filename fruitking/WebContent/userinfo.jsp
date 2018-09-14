@@ -86,7 +86,7 @@
 		PrintWriter script = response.getWriter();
 		UserDAO userDAO = new UserDAO();
 		int result = userDAO.login(email);	//로그인  할 수 있는지 확인
-		if (result == 1){	//정상 로그인
+		if (result == 1){	//db에 아이디 존재해서 로그인 성공
 			script.println("<script>");
 			script.println("alert('" + name + "님 환영합니다.')");
 			script.println("location.href = './main.jsp'");
@@ -98,7 +98,7 @@
 				script.println("alert('로그인 실패!')");
 				script.println("history.back()");
 				script.println("</script>");
-			} else {	//등록 완료
+			} else {	//등록 완료후 로그인 성공
 				script.println("<script>");
 				script.println("alert('" + name + "님 환영합니다.')");
 				script.println("location.href = './main.jsp'");
