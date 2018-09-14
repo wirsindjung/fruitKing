@@ -142,7 +142,7 @@
 				}
 			}
 			document.querySelector(".content").innerHTML = resultHTML;
-		}
+		}///
 		
 		function sendAjax(url, clickedName) {
 			var oReq = new XMLHttpRequest();
