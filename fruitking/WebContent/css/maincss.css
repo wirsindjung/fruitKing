@@ -1,10 +1,11 @@
-/* div:focus {
-  background-color: #ffff00;
-}
- */
+
 h2 {text-align: center}
 h2,h4 {
 	margin: 0px;
+}
+a, a:hover {
+	color: #000000;
+	text_decoration: none;
 }
 .container {
   padding-right: 15px;

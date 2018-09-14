@@ -12,7 +12,7 @@
 <title>notify</title>
 <link rel="stylesheet" href="../../css/bootstrap.css">
 </head>
-<body>
+<body style="background-color: rgb(253,255,244);">
 	<%
 		int id = 0;
 		if(request.getParameter("id") != null) {
@@ -27,7 +27,7 @@
 		}
 		NotifyDTO notify = new NotifyDAO().getNotifyDTO(id);
 	%>
-	<div style="background-color: rgb(253,255,244);">
+	<div>
 		<div>
 			<form method="post" action="updateAction.jsp?id=<%=id %>">
 				<table class="table table-striped" style="text-align: center;	border: 1px solid #dddddd;">
@@ -45,6 +45,7 @@
 						</tr>
 					</tbody>
 				</table>
+				<div> </div>
 				<input type="submit" class="btn btn-primary pull-right" value="수정">
 			</form>
 		</div>

@@ -12,13 +12,14 @@
 <title>notify</title>
 <link rel="stylesheet" href="../css/bootstrap.css">
 <style type="text/css">
+	
 	a, a:hover {
 		color: #000000;
 		text_decoration: none;
 	}
 </style>
 </head>
-<body>
+<body style="background-color: rgb(253,255,244);">
 	<%
 		int pageNumber = 1;
 		if (request.getParameter("pageNumber") != null) {
@@ -26,7 +27,7 @@
 		}
 	%>
 	<div>
-		<div style="background-color: rgb(253,255,244);">
+		<div >
 			<table class="table table-striped" style="text-align: center;	border: 1px solid #dddddd;">
 				<thead>
 					<tr>

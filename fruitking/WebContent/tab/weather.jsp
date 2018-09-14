@@ -5,7 +5,6 @@
 <head>
 <meta charset="UTF-8">
 <style>
-	ul, li {margin:0; padding:0;}
 	#main_menu {list-style: none;}
 	#main_menu>li {display:inline-block; width:200px; background:#f4f4f4; text-align: center; padding:10px 0;}
 	#main_menu>li>ul {list-style:none;display:none;position:absolute; background:#000; width:200px; margin-top:10px;}
@@ -21,7 +20,7 @@
 	}
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+<script src="https://maps.googleapis.com/maps/api/js?sensor=true&key=AIzaSyDWrSdfkf_-8Mc2feyShZsYs3ZnycdQBxw"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script>
 	function initialize(name, x, y, zoom) {
@@ -31,8 +30,6 @@
 		*/
 		var zoomLevel = zoom; // 첫 로딩시 보일 지도의 확대 레벨
 		var markerTitle = name; // 현재 위치 마커에 마우스를 올렸을때 나타나는 이름
-		var markerMaxWidth = 300; // 마커를 클릭했을때 나타나는 말풍선의 최대 크기
-		
 		
 		var myLatlng = new google.maps.LatLng(x, y);
 		var mapOptions = {
@@ -53,20 +50,13 @@
 </head>
 <body>
 
-	<h1>버튼으로 구현</h1>
 	<button onclick="weatherCall(seoul)">서울</button>
 	<button onclick="weatherCall(daegu)">대구</button>
 	<button onclick="weatherCall(busan)">부산</button>
 	<button onclick="weatherCall(florida)">플로리다</button>
 	<button onclick="weatherCall(newyork)">뉴욕</button>
 	<button onclick="weatherCall(sanfrancisco)">샌프란시스코</button><br>
-	<h1>셀렉트 박스로 구현</h1>
-	<select name="selectWeather" onchange="weatherCall(this.options[this.selectedIndex].value)">
-		<option value="" selected disabled>도시를 선택하세요.</option>
-		<option value=seoul>서울</option>
-		<option value=daegu>대구</option>
-		<option value=florida>플로리다</option>
-	</select>
+
 	<h1></h1>
 	나라 : <div class="weatherInfo" id="country"></div><br>
 	도시 : <div class="weatherInfo" id="name"></div><br>

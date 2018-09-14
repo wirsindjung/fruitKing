@@ -12,8 +12,8 @@
 <title>notify</title>
 <link rel="stylesheet" href="../../css/bootstrap.css">
 </head>
-<body>
-	<div style="background-color: rgb(253,255,244);">
+<body style="background-color: rgb(253,255,244);">
+	<div>
 		<div>
 			<form method="post" action="writeAction.jsp">
 				<table class="table table-striped" style="text-align: center;	border: 1px solid #dddddd;">

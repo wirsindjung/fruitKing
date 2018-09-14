@@ -1,4 +1,8 @@
 <%@ page import="java.util.Enumeration" %>
+<%@ page import="java.io.PrintWriter" %>
+<%@ page import="notify.NotifyDAO" %>
+<%@ page import="notify.NotifyDTO" %>
+<%@ page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
         pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -8,8 +12,7 @@
 <meta charset="UTF-8">
 <title>Fruit King</title>
 <link rel="stylesheet" href="./css/maincss.css">
-        <script>
-        </script>
+<link rel="stylesheet" href="../css/bootstrap.css">
 </head>
 <body>
 	<h2>Fruit King</h2><br><a href="./naverlogin.jsp">네이버로그인</a>
@@ -28,22 +31,23 @@
 			<div class="tablinks" onclick="openTab(event)">문의하기</div>
 		</div>
 		
-		<section class="content">
-		</section>
+		<section class="content"></section>
 	</div>
 	
 	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 	<script>
-		function autosize(){ //ifame 크기 맞춰주는 함수
+		//ifame 크기 맞춰주는 함수
+		function autosize(){
 		    var oFrame = top.document.getElementById("Iframe"); 
 		    contentHeight = oFrame.contentWindow.document.body.scrollHeight;
-		    if (contentHeight < 100) { //content 최소 높이
-		    	contentHeight = 100;
+		    if (contentHeight < 500) { //content 최소 높이
+		    	contentHeight = 500;
 		    }
-		    oFrame.style.height = String(contentHeight + 30) + "px";	//content 높이 자동 맞춤
+		    oFrame.style.height = String(contentHeight + 50) + "px";	//content 높이 자동 맞춤
 		}
 		
-		function openTab(evt) { //tab focus 함수
+		//tab focus 함수	
+		function openTab(evt) {		
 			var tablinks = document.getElementsByClassName("tablinks"); //탭을 불러옵니다. 
 			for (var i = 0, len = tablinks.length; i < len; i++) { 
 				tablinks[i].className = tablinks[i].className.replace(" active", ""); //탭을 초기화시킵니다.
