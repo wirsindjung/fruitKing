@@ -24,22 +24,17 @@ public class UserDAO {
 	}
 	
 	//로그인
-	public int login(String ID) {
-		String SQL1 = "select id, accesstoken, refreshtoken from user where id = ?";
-		String SQL2 = "update user set accesstoken = ?, refreshtoken = ?";
+	public int login(String Email) {
+		String SQL = "select id from user where email = ?";
 		try {
-			pstmt = conn.prepareStatement(SQL1);
-			pstmt.setString(1, ID);
+			pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1, Email);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
-				if(rs.getString(1).equals(ID)) {
-					pstmt = conn.prepareStatement(SQL2);
-					pstmt.setString(1, rs.getString(2));
-					pstmt.setString(2, rs.getString(3));
-					pstmt.executeUpdate();
-					return 1;	//로그인 성공
-				} else {
-					return 0;	//id 없음
+				if(rs.getString(1) != null) {	//로그인 성공
+					return 1;
+				} else {	//id 없음
+					return 0;
 				}
 			} 
 		} catch(Exception e) {
@@ -50,18 +45,17 @@ public class UserDAO {
 	}
 	
 	//회원 등록
-	public int regist(String ID, String Email, String Name, String Age, String Birth, String Gender, String Accesstoken, String Refreshtoken) {
-		String SQL = "insert into user values(?, ?, ?, ?, ?, ?, ?, ?)";
+	public int regist(String Email, String Name, int Age, String Birth, Boolean Gender) {
+		String SQL = "insert into user values(?, ?, ?, ?, ?, ?, ?)";
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(SQL);
-			pstmt.setString(1, ID);
+			pstmt.setInt(1, getNext());
 			pstmt.setString(2, Email);
 			pstmt.setString(3, Name);
-			pstmt.setString(4, Age);
+			pstmt.setInt(4, Age);
 			pstmt.setString(5, Birth);
-			pstmt.setString(6, Gender);
-			pstmt.setString(7, Accesstoken);
-			pstmt.setString(8, Refreshtoken);
+			pstmt.setBoolean(6, Gender);
+			pstmt.setInt(7, 2);
 			return pstmt.executeUpdate();
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -69,4 +63,18 @@ public class UserDAO {
 		return -1;	//db 오류
 	}
 	
+	public int getNext() {
+		String SQL = "select id from user order by id desc";
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(SQL);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				return rs.getInt(1) + 1;
+			}
+			return -1;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return -1;
+	}	
 }

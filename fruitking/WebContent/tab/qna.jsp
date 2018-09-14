@@ -7,7 +7,7 @@
 </head>
 <body>
 	<div>문의하기 입니다.</div>
-	<form action="https://formspree.io/2mingju@naver.com" method="POST">
+	<form action="htt  ps://formspree.io/2mingju@naver.com" method="POST">
 		<div>
         	<label for="name">이름:</label>
         	<input type="text" name="name">

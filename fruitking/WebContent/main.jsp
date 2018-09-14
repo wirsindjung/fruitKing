@@ -40,7 +40,7 @@
 		    if (contentHeight < 100) { //content 최소 높이
 		    	contentHeight = 100;
 		    }
-		    oFrame.style.height = String(contentHeight) + "px";	//content 높이 자동 맞춤
+		    oFrame.style.height = String(contentHeight + 30) + "px";	//content 높이 자동 맞춤
 		}
 		
 		function openTab(evt) { //tab focus 함수
