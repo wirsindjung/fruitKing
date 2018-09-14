@@ -10,14 +10,6 @@
 <%@ page import="org.json.simple.parser.JSONParser" %>
 <%@ page import="user.UserDAO" %>
 <%@ page import="java.io.PrintWriter" %>
-<jsp:useBean id="user" class="user.UserDTO" scope="page" />
-<jsp:setProperty name="user" property="userID" />
-<jsp:setProperty name="user" property="userEmail" />
-<jsp:setProperty name="user" property="userName" />
-<jsp:setProperty name="user" property="userAge" />
-<jsp:setProperty name="user" property="userBirth" />
-<jsp:setProperty name="user" property="userGender" />
-<jsp:setProperty name="user" property="userGrade" />
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -104,7 +96,7 @@
 		PrintWriter script = response.getWriter();
 		UserDAO userDAO = new UserDAO();
 		int result = userDAO.login(email);	//로그인  할 수 있는지 확인
-		if (result == 1){	//정상 로그인
+		if (result == 1){	//db에 아이디 존재해서 로그인 성공
 			script.println("<script>");
 			script.println("alert('" + name + "님 환영합니다.')");
 			script.println("location.href = './main.jsp'");
@@ -116,7 +108,7 @@
 				script.println("alert('로그인 실패!')");
 				script.println("history.back()");
 				script.println("</script>");
-			} else {	//등록 완료
+			} else {	//등록 완료후 로그인 성공
 				script.println("<script>");
 				script.println("alert('" + name + "님 환영합니다.')");
 				script.println("location.href = './main.jsp'");
@@ -124,14 +116,13 @@
 			}
 		} else {	//db 오류
 			script.println("<script>");
-			script.println("alert('로그인 실패!')");
+			script.println("alert('로그인 실패!!!')");
 			script.println("history.back()");
 			script.println("</script>");
 		}
 	} catch (Exception e) {
 	  	System.out.println(e);
 	}
-
 %>
 </body>
 </html>
