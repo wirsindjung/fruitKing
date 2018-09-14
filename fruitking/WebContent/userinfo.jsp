@@ -10,14 +10,6 @@
 <%@ page import="org.json.simple.parser.JSONParser" %>
 <%@ page import="user.UserDAO" %>
 <%@ page import="java.io.PrintWriter" %>
-<jsp:useBean id="user" class="user.UserDTO" scope="page" />
-<jsp:setProperty name="user" property="userID" />
-<jsp:setProperty name="user" property="userEmail" />
-<jsp:setProperty name="user" property="userName" />
-<jsp:setProperty name="user" property="userAge" />
-<jsp:setProperty name="user" property="userBirth" />
-<jsp:setProperty name="user" property="userGender" />
-<jsp:setProperty name="user" property="userGrade" />
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
