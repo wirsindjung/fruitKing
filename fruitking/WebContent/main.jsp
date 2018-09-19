@@ -24,7 +24,10 @@
 <link rel="stylesheet" href="../css/bootstrap.css">
 </head>
 <body onLoad="pagestart()">
-	<h2><a href="index.jsp">Fruit King</a></h2><br>
+	<div class="logo" style="text-align: center;">
+                <a href="main.jsp"><img src="./image/logo_image.png" width="150"/></a><br>
+        </div>
+
 	<%
 	Cookie[] cookies = request.getCookies();                // 요청정보로부터 쿠키를 가져온다.
         String access_token = "";       // 네이버 엑세스 토큰
