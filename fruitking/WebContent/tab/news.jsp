@@ -61,12 +61,7 @@
     StringBuffer response1 = new StringBuffer();
     while ((inputLine = br.readLine()) != null) {
         response1.append(inputLine);
-        //System.out.println(inputLine);
-        //System.out.println("===========================================");
     }
-    //br.close();
-    //System.out.println(response);
-    
     JSONParser parser = new JSONParser();
     Object obj = parser.parse(response1.toString());
     JSONObject jsonObj = (JSONObject)obj;
